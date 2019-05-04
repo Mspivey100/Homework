@@ -1,0 +1,30 @@
+Sub totalticket()
+   Dim total As double
+
+   Cells(1,9).Value = "Ticker"
+   Cells(1,10).Value = "Totals"
+   LastRow = Cells(Rows.Count, 1).End(xlUp).Row
+
+   startRow = 2
+   total = 0
+
+   For i = 2 To LastRow
+
+       If Cells(i + 1, 1).Value <> Cells(i, 1).Value Then
+         total = total + Cells(i,7).Value
+
+         Cells(startRow, 10) = total
+
+         Cells(startRow, 9).Value = Cells(i, 1).Value
+
+         startRow = startRow + 1
+
+         total = 0
+
+       else
+         total = total + Cells(i, 7).Value
+
+       End If
+
+    Next i
+End Sub
